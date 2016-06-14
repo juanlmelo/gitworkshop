@@ -1,23 +1,23 @@
 # Git workshop
 Usualmente el mejor lugar para encontrar documentacion es el sitio oficial, aqui podran encontrar un libro con suficiente informacion: https://git-scm.com/book/en/v2
 
-La mejor manera de utilizar git es a traves de la linea de comandos, y es en lo que nos enfocaremos durante el workshop.
+La mejor manera de utilizar git es a traves de la linea de comandos, aunque hay herramientas fuera de git que complementan todo el ciclo de un merge request (MR)  durante el taller nos enfocaremos mayormente en como utilizar git de la linea de comandos y veremos un ejemplo de un MR utilizando gitlab.
 
 
 ## Resources
 * [Basicos de Git](http://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
 * [Instalacion](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [Configuracion de github](https://help.github.com/articles/set-up-git/)
+* [Configuracion de github](https://help.github.com/articles/set-up-git)
 * [Ignorar archivos](https://git-scm.com/docs/gitignore)
 
 
-* Tips
+* Algunos tips
 ```shell
 # bash completion for git and shell coloring
-OSX
+# OsX
 brew install bash-completion
 
-Add this to your ~/.bash_profile
+#Add this to your ~/.bash_profile
 
 YELLOW="\[\033[0;33m\]"
 
@@ -40,6 +40,7 @@ PS1="$LIGHT_GRAY\u@\h$YELLOW:\w$NO_COLOR\$(parse_git_branch)$NO_COLOR\$ "
 ```
 
 * Configuraciones globales
+
 ```shell
 git config --global user.name "NOMBRE"
 git config --global user.email "EMAIL"
@@ -103,7 +104,7 @@ git reset --soft HEAD^
 ## Remotes
 * [Introduccion](http://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
 
-Usualmente solo se utiliza un repositorio remoto, los repositorios remotos son solamente versiones de tu proyecto en la red.
+En la mayoria de los casos se utiliza solo un repositorio remoto, son versiones de tu proyecto en el origen del repo.
 
 ```shell
 # Listarlos
@@ -186,7 +187,7 @@ Sugiero [kdiff3](http://kdiff3.sourceforge.net/) que es gratis, opensource y mul
 ## Rebasing
 * [Basic reabasing](http://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
-### *Advertencia*
+# *Advertencia*
 Hacer rebase reescribe la historia de git, significa que se les asignara un nuevo hash a tus commits despues del rebase.
 Haz esto solo en tu propio branch y nunca en el branch principal (master).
 
