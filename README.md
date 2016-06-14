@@ -59,7 +59,7 @@ git config --global color.ui auto
 ```
 
 * Crear alias
-```
+```shell
 # listar alias
 git config --list | grep alias
 # agregar alias
@@ -199,60 +199,55 @@ Aqui usamos una estrategia llamada [Feature branch workflow](https://www.atlassi
 Donde basicamente mantenemos un branch de master limpio (con pull reciente) creamos un branch de ahi y trabajamos en el. El proceso de watering es recomendado hacerlo diario.
 
 Crear un branch de master
-`git checkout master`
+```shell
+git checkout master
+git pull
+git checkout -b feature
 
-`git pull`
+# hacer un commit
 
-`git checkout -b feature`
+git touch file.txt
+git add .
+git commit -m "add file"
 
-hacer un commit
+# Si hay nuevos commits en master probablemente requieras integrar esos cambios en tu feature branch. Asi que lo que debemos hacer es tomar esos cambios y hacer rebase de tu branch feature en master.
 
-`git touch file.txt`
+git checkout master
+git pull origin master
+git checkout feature
+git rebase master
 
-`git add .`
+# Si tienes conflictos git te lo dira, utiliza algun mergetool.
 
-`git commit -m "add file"`
+git mergetool
 
-Si hay nuevos commits en master probablemente requieras integrar esos cambios en tu feature branch. Asi que lo que debemos hacer es tomar esos cambios y hacer rebase de tu branch feature en master.
+# Una vez resueltos los conflictos,  debemos indicar que deseamos continuar.
 
-`git checkout master`
+git rebase --continue
 
-`git pull origin master`
+# Puedes cancelar el proceso de rebase ejecutando:
 
-`git checkout feature`
+git rebase --abort
 
-`git rebase master`
+# Haz integrado los ultimos cambios de `master` en tu `feature` branch, ademas tus commits se han movido hacia el top de la historia.
 
-Si tienes conflictos git te lo dira, utiliza algun mergetool.
+# **Nota que esto ha cambiado el hash de tu commit, asi que si deseas hacer push deberas forzarlo.**
 
-`git mergetool`
+git push origin feature -f
 
-Una vez resueltos los conflictos, decirle a git que deseamos continuar.
+# Antes de hacer un merge request es necesario hacer rebase a tu branch con el branch de `master`.
+# Probablemente quieras limpiar los commits de tu branch de la siguiente manera:
 
-`git rebase --continue`
+git reset --soft HEAD~3
 
-Puedes cancelar el proceso de rebase ejecutando:
+# Donde `3` es el numero de commits a hacer `squash` o comprimir.
 
-`git rebase --abort`
+# Eso quitara tus 3 ultimos commits y pondra los archivos afectados en tu working copy directory, es decir como si los acabaras de modificar.
 
-Haz integrado los ultimos cambios de `master` en tu `feature` branch, ademas tus commits se han movido hacia el top de la historia.
+# Solo necesitaras hacerle commit, y despues push como un solo commit al remote branch (con el flag de -f por que haz reescrito la historia).
 
-**Nota que esto ha cambiado el hash de tu commit, asi que si deseas hacer push deberas forzarlo.**
-
-`git push origin feature -f`
-
-Antes de hacer un merge request es necesario hacer rebase a tu branch con el branch de `master`.
-Probablemente quieras limpiar los commits de tu branch de la siguiente manera:
-
-`git reset --soft HEAD~3`
-
-Donde `3` es el numero de commits a hacer `squash` o comprimir.
-
-Eso quitara tus 3 ultimos commits y pondra los archivos afectados en tu working copy directory, es decir como si los acabaras de modificar.
-
-Solo necesitaras hacerle commit, y despues push como un solo commit al remote branch (con el flag de -f por que haz reescrito la historia).
-
-Aqui estaras listo para crear tu merge request ya que tu branch esta solo 1 commit adelante de `master`, debido a esto el merge sera fast-forward.
+#Aqui estaras listo para crear tu merge request ya que tu branch esta solo 1 commit adelante de `master`, debido a esto el merge sera fast-forward.
+```
 
 
 
