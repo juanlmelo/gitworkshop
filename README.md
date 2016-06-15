@@ -138,7 +138,7 @@ origin	git@github.com:juanlmelo/git-training.git (push)
 git stash list # listar los elementos en stash
 git stash      # coloca los cambios actuales en stash
 git stash pop  # saca del stack los ultimos cambios ingresados al stack
-git stash pop stash{2} #igual que el anterior pero la posicion 2 en el stack
+git stash pop stash@{2} #igual que el anterior pero la posicion 2 en el stack
 git stash show -p # muestra el diff de el ultimo set de cambios guardados 
 git stash show -p stash@{1} #igual que el anterior pero la posicion 1
 ```
