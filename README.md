@@ -143,6 +143,13 @@ git stash show -p # muestra el diff de el ultimo set de cambios guardados
 git stash show -p stash@{1} #igual que el anterior pero la posicion 1
 ```
 
+## Creating a branch
+Crear un branch localmente y hacerle push hacia el repo remoto.
+```shell
+git checkout -b my-branch
+git push --set-upstream origin my-branch
+```
+
 ## Watering & Merging
 * [Merging basico](http://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 El proceso de hacer 'watering' se le llama cuando traemos los ultimos cambios de la rama padre hacia nuestro branch, es decir actualizamos nuestro branch con los ultimos commits.
