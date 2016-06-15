@@ -132,6 +132,17 @@ origin	git@github.com:juanlmelo/git-training.git (fetch)
 origin	git@github.com:juanlmelo/git-training.git (push)
 ```
 
+## Stash
+* Toma los cambios en tu working directory o los archivos en staging y los coloca en un stack para su aplicacion en otro momento o en otra rama. 
+```shell
+git stash list # listar los elementos en stash
+git stash      # coloca los cambios actuales en stash
+git stash pop  # saca del stack los ultimos cambios ingresados al stack
+git stash pop stash{2} #igual que el anterior pero la posicion 2 en el stack
+git stash show -p # muestra el diff de el ultimo set de cambios guardados 
+git stash show -p stash@{1} #igual que el anterior pero la posicion 1
+```
+
 ## Watering & Merging
 * [Merging basico](http://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 El proceso de hacer 'watering' se le llama cuando traemos los ultimos cambios de la rama padre hacia nuestro branch, es decir actualizamos nuestro branch con los ultimos commits.
@@ -155,6 +166,10 @@ git merge --no-commit --squash my-branch
 # correr pruebas, arreglar conflictos
 git commit -m "comentario"
 git push
+
+# eliminar tu rama
+git branch -d my-branch
+git push origin :my-branch
 ```
 
 
