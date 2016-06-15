@@ -4,6 +4,7 @@ Usualmente el mejor lugar para encontrar documentacion es el sitio oficial, aqui
 La mejor manera de utilizar git es a traves de la linea de comandos, aunque hay herramientas fuera de git que complementan todo el ciclo de un merge request (MR)  durante el taller nos enfocaremos mayormente en como utilizar git de la linea de comandos y veremos un ejemplo de un MR utilizando gitlab.
 
 
+
 ## Resources
 * [Basicos de Git](http://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
 * [Instalacion](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
